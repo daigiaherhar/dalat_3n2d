@@ -36,11 +36,18 @@ Lịch trình 3 ngày 2 đêm – chill, nhậu, ngắm hoàng hôn & bình minh
    ```
    Thay `USERNAME` và `REPO_NAME` bằng tên GitHub và tên repo của bạn.
 
-3. **Bật GitHub Pages**
-   - Vào repo → **Settings** → **Pages** (menu trái).
+3. **Bật GitHub Pages** (chọn **một** trong hai cách):
+
+   **Cách A – Deploy từ branch (đơn giản):**
    - **Source**: Deploy from a branch.
    - **Branch**: `main` (hoặc `master`) → folder **/ (root)**.
    - Save.
+
+   **Cách B – GitHub Actions (đã có workflow trong repo):**
+   - **Source**: GitHub Actions.
+   - Workflow **"Deploy to GitHub Pages"** sẽ chạy khi push lên `main`, deploy nguyên thư mục gốc (static HTML/CSS, **không** dùng Jekyll).
+
+   ⚠️ **Lưu ý:** Site này là static HTML, không phải Jekyll. Nếu chọn GitHub Actions, dùng workflow `pages.yml` trong repo; không dùng "Jekyll" trong Settings vì sẽ báo lỗi thiếu thư mục `docs`.
 
 4. **Xem site**
    - Sau vài phút, site sẽ có tại:  

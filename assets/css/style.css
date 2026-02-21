@@ -1,10 +1,19 @@
-/* Lịch trình Đà Lạt – GitHub Pages */
+/* Lịch trình Đà Lạt – Giao diện custom */
 :root {
-  --primary: #2d5a3d;
-  --accent: #c45c26;
-  --bg: #faf8f5;
-  --card: #fff;
-  --text: #333;
+  --primary: #1b4332;
+  --primary-light: #2d6a4f;
+  --accent: #b5651d;
+  --accent-soft: #d4a373;
+  --bg: #f8f6f3;
+  --bg-card: #ffffff;
+  --text: #2d3436;
+  --text-muted: #636e72;
+  --border: rgba(27, 67, 50, 0.12);
+  --shadow: 0 4px 24px rgba(27, 67, 50, 0.08);
+  --shadow-hover: 0 8px 32px rgba(27, 67, 50, 0.12);
+  --radius: 16px;
+  --radius-sm: 10px;
+  --font: 'Be Vietnam Pro', 'Segoe UI', system-ui, -apple-system, sans-serif;
 }
 
 * {
@@ -12,73 +21,207 @@
 }
 
 body {
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-family: var(--font);
   background: var(--bg);
   color: var(--text);
   margin: 0;
-  padding: 24px;
-  line-height: 1.6;
+  padding: 0;
+  line-height: 1.65;
 }
 
-.container {
-  max-width: 800px;
+/* ---------- Header / Hero ---------- */
+.site-header {
+  position: relative;
+  padding: 3rem 1.5rem 3.5rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.header-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, #1b4332 0%, #2d6a4f 35%, #40916c 70%, #52b788 100%);
+  opacity: 0.96;
+}
+
+.header-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L30 60M0 30L60 30' stroke='%23fff' stroke-opacity='0.04' stroke-width='0.5' fill='none'/%3E%3C/svg%3E");
+  opacity: 0.6;
+}
+
+.header-content {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
   margin: 0 auto;
 }
 
-.header {
-  margin-bottom: 8px;
+.header-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 0.35rem 1rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  letter-spacing: 0.02em;
 }
 
-.header h1 {
-  color: var(--primary);
-  font-size: 1.75rem;
-  margin-top: 0;
-  border-bottom: 2px solid var(--accent);
-  padding-bottom: 8px;
+.header-title {
+  font-size: clamp(1.85rem, 5vw, 2.5rem);
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 0.75rem;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
 }
 
-.lead {
-  margin: 0 0 16px;
-  font-size: 1rem;
+.header-lead {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.92);
+  margin: 0 0 1.5rem;
+  line-height: 1.6;
 }
 
-.meta {
-  background: #e8f0ec;
-  padding: 12px 16px;
-  border-radius: 8px;
-  margin: 16px 0;
+.header-lead strong {
+  color: #fff;
+}
+
+.header-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem 1.25rem;
+}
+
+.meta-item {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.12);
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--radius-sm);
+}
+
+.header-wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 48px;
+  background: var(--bg);
+  clip-path: polygon(0 60%, 100% 0, 100% 100%, 0 100%);
+}
+
+/* ---------- Main & Container ---------- */
+.main {
+  padding: 0 0 3rem;
+  margin-top: -1px;
+}
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* ---------- Images ---------- */
+.img-wrap {
+  position: relative;
+  margin: 1.5rem 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  background: linear-gradient(135deg, #e8edea 0%, #dde5e0 100%);
+}
+
+.img-wrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+  vertical-align: middle;
+}
+
+.img-placeholder {
+  display: none;
+  min-height: 220px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, #e8edea 0%, #dde5e0 100%);
+  color: var(--text-muted);
   font-size: 0.95rem;
+  text-align: center;
 }
 
-h2 {
-  color: var(--primary);
-  font-size: 1.25rem;
-  margin-top: 28px;
+.img-placeholder.show {
+  display: flex;
 }
 
+.img-placeholder-icon {
+  font-size: 3rem;
+  opacity: 0.8;
+}
+
+.img-caption {
+  padding: 0.65rem 1rem;
+  background: rgba(27, 67, 50, 0.06);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* ---------- Day blocks ---------- */
 .day-block {
-  margin-bottom: 8px;
+  margin-bottom: 2rem;
 }
 
-.day {
-  background: var(--card);
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 24px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+.day-block-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 2rem 0 1rem;
+}
+
+.day-block-icon {
+  font-size: 1.2em;
+}
+
+.day-card {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.5rem 1.75rem;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  transition: box-shadow 0.2s ease;
+}
+
+.day-card:hover {
+  box-shadow: var(--shadow-hover);
 }
 
 .day-title {
   font-weight: 700;
   color: var(--accent);
-  margin-bottom: 12px;
-  font-size: 1.1rem;
+  margin: 1.25rem 0 0.75rem;
+  font-size: 1.08rem;
+}
+
+.day-title:first-child {
+  margin-top: 0;
 }
 
 .slot {
-  margin: 12px 0;
-  padding-left: 12px;
-  border-left: 3px solid var(--primary);
+  margin: 1rem 0;
+  padding-left: 1rem;
+  border-left: 3px solid var(--primary-light);
 }
 
 .time {
@@ -88,92 +231,112 @@ h2 {
 
 .place {
   font-weight: 600;
+  color: var(--text);
 }
 
 .note {
   font-size: 0.9rem;
-  color: #555;
-  margin-top: 4px;
-}
-
-.img-wrap {
-  margin: 16px 0;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.img-wrap img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.img-caption {
-  padding: 8px 12px;
-  background: #f0f0f0;
-  font-size: 0.85rem;
-  color: #555;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+  font-style: italic;
 }
 
 ul {
-  margin: 8px 0;
-  padding-left: 20px;
+  margin: 0.5rem 0 0;
+  padding-left: 1.25rem;
 }
 
 .tag {
   display: inline-block;
   background: var(--primary);
   color: #fff;
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-size: 0.8rem;
-  margin-right: 6px;
-  margin-top: 4px;
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin-left: 0.35rem;
+  margin-top: 0.25rem;
 }
 
 .tag.sunset {
-  background: #c45c26;
+  background: linear-gradient(135deg, #b5651d, #c17f3a);
 }
 
 .tag.sunrise {
-  background: #6b8e23;
+  background: linear-gradient(135deg, #2d6a4f, #40916c);
 }
 
 .tag.chill {
-  background: #5a4a7a;
+  background: linear-gradient(135deg, #5a4a7a, #6b5b7a);
 }
 
-.summary {
-  margin-top: 8px;
+/* ---------- Summary ---------- */
+.summary-card {
+  margin-top: 2rem;
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.75rem;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
 }
 
-.summary ul {
+.summary-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 0 0 1rem;
+}
+
+.summary-list {
   list-style: none;
-  padding-left: 0;
+  padding: 0;
+  margin: 0;
 }
 
-.summary li {
-  margin-bottom: 8px;
-  padding-left: 0;
+.summary-list li {
+  margin-bottom: 0.6rem;
+  padding-left: 1.5rem;
+  position: relative;
 }
 
+.summary-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* ---------- Footer ---------- */
 .footer {
-  margin-top: 32px;
-  padding-top: 16px;
-  border-top: 1px solid #ddd;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
   font-size: 0.9rem;
-  color: #666;
+  color: var(--text-muted);
 }
 
+/* ---------- Responsive ---------- */
 @media (max-width: 600px) {
-  body {
-    padding: 16px;
+  .site-header {
+    padding: 2rem 1rem 2.5rem;
   }
-  .header h1 {
-    font-size: 1.4rem;
+
+  .header-meta {
+    flex-direction: column;
+    align-items: center;
   }
-  .day {
-    padding: 16px;
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .day-card {
+    padding: 1.25rem 1rem;
+  }
+
+  .img-placeholder {
+    min-height: 180px;
+    padding: 1.5rem;
   }
 }
